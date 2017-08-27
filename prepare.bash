@@ -9,7 +9,7 @@ do
   echo ""
   echo "---- renew: $domain ----"
   echo ""
-  ./certbot/certbot-auto certonly --email "$certemail" "$certextra" --force-renewal --agree-tos --non-interactive --standalone --rsa-key-size 4096 -d "$domain"
+  ./certbot/certbot-auto certonly --email "$certemail" $certextra --agree-tos --non-interactive --standalone --rsa-key-size 4096 -d "$domain"
 done
 systemctl start apache2
 
