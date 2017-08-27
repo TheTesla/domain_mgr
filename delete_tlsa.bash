@@ -7,8 +7,8 @@ source le_paths.bash
 for fulldomain in $(ls $certbasepath)
 do
   certfile=$certbasepath/$fulldomain/$certname
-  oldtlsarecords=$(/root/inwx_qry.bash $api $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev) | sort)
-  tlsarecords=$(/root/chaingen.bash $certfile $fulldomain:0 | grep -oP 'TLSA.*' | sed 's/TLSA[[:space:]]//' | sort)
+  oldtlsarecords=$(./inwx_qry.bash $api $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev) | sort)
+  tlsarecords=$(./chaingen.bash $certfile $fulldomain:0 | grep -oP 'TLSA.*' | sed 's/TLSA[[:space:]]//' | sort)
   if [ "$oldtlsarecords" ]
   then
     difference=$(comm -3 <(echo "$oldtlsarecords") <(echo "$tlsarecords"))
@@ -24,7 +24,7 @@ do
       while IFS= read -r tlsa
       do
         echo "delete: ${tlsa}"
-        /root/inwx_del_tlsa.bash $api $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev) "${tlsa}"
+        ./inwx_del_tlsa.bash $api $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev) "${tlsa}"
       done <<< "${difference}" 
     fi
   fi
