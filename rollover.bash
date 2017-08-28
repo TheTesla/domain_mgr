@@ -6,7 +6,7 @@ source domain_config.bash
 src=$certbasepath
 dest=$certdest 
 
-cp -rf $src/* $dest/.
+cp -rfL $src/* $dest/.
 
 systemctl restart apache2
 
