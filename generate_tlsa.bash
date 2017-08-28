@@ -11,7 +11,7 @@ do
   while IFS= read -r tlsa 
   do
     echo "${tlsa}"
-    ./inwx_add_tlsa.bash $api $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev) "${tlsa}" '*' 600
+    ./inwx_add_tlsa.bash $inwxapi $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev) "${tlsa}" '*' 600
   done <<< "${tlsarecords}" 
 
 done
