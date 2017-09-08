@@ -23,5 +23,5 @@ do
   ./inwx_add_dkim.bash $inwxapi $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev) "$dkimkey" $dkim_keyname 600 
 done
 
-echo "selector = \"$dkim_keyname\";" > /var/lib/rspamd/dkim_signing_selector_new.conf
+echo "selector = \"$dkim_keyname\";" > /etc/rspamd/dkim_signing_selector_new.conf
 
