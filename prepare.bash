@@ -19,4 +19,5 @@ echo ""
 
 ./generate_tlsa.bash
 
+./prepare_dkim.bash
 

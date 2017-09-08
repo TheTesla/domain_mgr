@@ -12,3 +12,5 @@ systemctl restart apache2
 
 ./delete_tlsa.bash
 
+./rollover_dkim.bash
+
