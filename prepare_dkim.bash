@@ -1,7 +1,7 @@
 #!/bin/bash
 
 dkim_keysize=2048
-dkim_keyname=$(date '+%Y_%m_%d__%H_%M_%S\')
+dkim_keyname=$(date '+%Y_%m_%d__%H_%M_%S')
 dkim_keylocation=/var/lib/rspamd/dkim
 
 source domain_config.bash
@@ -23,5 +23,5 @@ do
   ./inwx_add_dkim.bash $inwxapi $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev) "$dkimkey" $dkim_keyname 600 
 done
 
-echo "selector = \"$dkim_keyname\";" > /etc/rspamd/dkim_signing_selector_new.conf
+./dkim_signing_template.bash $dkim_keyname > /etc/rspamd/dkim_signing_new.conf
 
