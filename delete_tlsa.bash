@@ -7,6 +7,7 @@ source le_paths.bash
 for fulldomain in $(ls $certbasepath)
 do
   certfile=$certbasepath/$fulldomain/$certname
+  echo "$certfile"
   oldtlsarecords=$(./inwx_qry.bash $inwxapi $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev) "*" | sort)
   tlsarecords=$(./chaingen.bash $certfile $fulldomain:0 | grep -oP 'TLSA.*' | sed 's/TLSA[[:space:]]//' | sort)
   if [ "$oldtlsarecords" ]
