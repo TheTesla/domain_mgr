@@ -2,11 +2,13 @@
 
 source inwx_config.bash
 source le_paths.bash
+source domain_config.bash
 
+. ./primdomain.bash
 
-for fulldomain in $(ls $certbasepath)
+for fulldomain in $domainlist
 do
-  certfile=$certbasepath/$fulldomain/$certname
+  certfile=$certbasepath/$primdomain/$certname
   echo "$certfile"
   oldtlsarecords=$(./inwx_qry.bash $inwxapi $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev) "*" | sort)
   tlsarecords=$(./chaingen.bash $certfile $fulldomain:0 | grep -oP 'TLSA.*' | sed 's/TLSA[[:space:]]//' | sort)

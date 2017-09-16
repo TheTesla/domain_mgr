@@ -6,10 +6,7 @@ source domain_config.bash
 src=$certbasepath
 dest=$certdest 
 
-for primdomain in $domainlist
-do
-  break
-done
+. ./primdomain.bash
 
 for domain in $domainlist
 do
