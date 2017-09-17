@@ -1,6 +1,6 @@
-[submodule "python2.7-client"]
-	path = python2.7-client
-	url = https://github.com/TheTesla/python2.7-client.git
 [submodule "certbot"]
 	path = certbot
 	url = https://github.com/certbot/certbot.git
+[submodule "python2.7-client"]
+	path = python2.7-client
+	url = https://github.com/TheTesla/python2.7-client.git
