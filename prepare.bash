@@ -2,6 +2,7 @@
 
 source domain_config.bash
 
+./update_ip.bash
 
 systemctl stop apache2
 systemctl stop nginx
