@@ -11,6 +11,7 @@ source le_paths.bash
 rspamadm dkim_keygen -b $dkim_keysize -s 2017 -k $dkim_keylocation/$dkim_keyname.key > $dkim_keylocation/$dkim_keyname.txt
 
 chmod 440 $dkim_keylocation/*
+chown _rspamd:_rspamd $dkim_keylocation/*
 
 echo "-- dkim key entry --"
 
