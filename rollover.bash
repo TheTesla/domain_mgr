@@ -16,7 +16,5 @@ done
 systemctl restart apache2
 systemctl restart nginx
 
-./delete_tlsa.bash
-
 ./rollover_dkim.bash
 
