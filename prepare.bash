@@ -4,6 +4,8 @@ source domain_config.bash
 
 ./update_ip.bash
 
+./update_spf.bash
+
 systemctl stop apache2
 systemctl stop nginx
 
