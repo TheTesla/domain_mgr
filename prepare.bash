@@ -2,9 +2,14 @@
 
 source domain_config.bash
 
+ipv4=$arecord
+ipv6=$aaaarecord
+
 ./update_ip.bash
 
 ./update_spf.bash
+
+./update_adsp.bash
 
 systemctl stop apache2
 systemctl stop nginx

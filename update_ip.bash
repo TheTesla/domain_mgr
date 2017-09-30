@@ -3,10 +3,11 @@
 source inwx_config.bash
 source domain_config.bash
 
+source get_ips.bash
 . ./primdomain.bash
 
-arecord=$(curl ipv4.icanhazip.com)
-aaaarecord=$(curl ipv6.icanhazip.com)
+arecord=$ipv4 # $(curl ipv4.icanhazip.com)
+aaaarecord=$ipv6 # $(curl ipv6.icanhazip.com)
 
 for fulldomain in $domainlist
 do
