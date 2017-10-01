@@ -11,6 +11,8 @@ ipv6=$aaaarecord
 
 ./update_adsp.bash
 
+./update_mx.bash
+
 systemctl stop apache2
 systemctl stop nginx
 

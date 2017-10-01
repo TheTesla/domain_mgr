@@ -13,11 +13,11 @@ do
   spfrecord="v=spf1"
   if [ "$ipv4" ]
   then
-    spfrecord="$spfrecord ipv4:$ipv4"
+    spfrecord="$spfrecord a:$ipv4"
   fi
   if [ "$ipv6" ]
   then
-    spfrecord="$spfrecord ipv6:$ipv6"
+    spfrecord="$spfrecord aaaa:$ipv6"
   fi
     spfrecord="$spfrecord ?all"
   oldspfrecords=$(./inwx_qry_txt.bash $inwxapi $inwxlogin $inwxpasswd $(echo $fulldomain | rev | cut -d. -f3- | rev) $(echo $fulldomain | rev | cut -d. -f-2 | rev)| grep "v=spf1" | sort)
